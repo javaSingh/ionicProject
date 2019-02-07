@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<ion-content padding>
+
+
+  <form [formGroup]="myForm">
+    <ion-item>
+      <ion-input formControlName='name' placeholder="Name" [(ngModel)]="name" name='name'></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName='email' placeholder="email" [(ngModel)]="email" name='email'></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input formControlName='mobile' placeholder="Mobile" [(ngModel)]="mobile" name='mobile'></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input formControlName='items' placeholder="Items" [(ngModel)]="items" name='items' value={{itemValue}} disabled="{{isEnabled}}">
+        <!-- <button clear item-right *ngIf="isEnabled" (click)=itemClear()>Clear</button> -->
+
+      </ion-input>
+      <!-- <ion-button slot='end' > -->
+      <ion-icon slot="end" name="create" clear *ngIf="isEnabled" (click)=itemClear()></ion-icon>
+      <!-- </ion-button> -->
+    </ion-item>
+  </form>
+
+
+
+  <ion-list>
+    <!--    <ion-item>
+      <ion-label>Items</ion-label>
+      <ion-select>
+        <ion-select-option *ngFor="let c of countries |search : items" value="{{c.name}}">{{c.name}}</ion-select-option>
+    </ion-select>
+    </ion-item> -->
+  </ion-list>
+
+  <!--     <ion-searchbar [(ngModel)]="terms"></ion-searchbar> -->
+  <!--   <ion-list>
+    <ion-item *ngFor="let c of countries | search : terms">
+      <ion-avatar item-left>
+        <img src="{{c.flag}}">
+      </ion-avatar>
+      <h2> {{c.name}}</h2>
+      <p>Capital: {{c.capital}}, Region: {{c.region}}</p>
+    </ion-item>
+  </ion-list> -->
+  <ion-virtual-scroll *ngIf="showVar" [items]="countries | search : items">
+    <!-- <ion-virtual-scroll [items]="countries "> -->
+    <ion-item *virtualItem="let c " (click)="cClick(c.name)">
+      {{c.name}}
+    </ion-item>
+
+  </ion-virtual-scroll>
+
+  <!-- Fill -->
+  <ion-button type='submit' (click)="meraFun();" expand="full" disabled={}> GO </ion-button>
+
+
+</ion-content>

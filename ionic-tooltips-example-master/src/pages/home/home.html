@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Tooltips Demo
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only tooltip="Call" navTooltip [event]="tooltipEvent" [duration]="duration">
+        <ion-icon name="call"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label>Show arrow</ion-label>
+    <ion-toggle mode="ios" [(ngModel)]="showArrow"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    Show tooltip on
+    <p padding-top>
+      <ion-segment mode="ios" [(ngModel)]="tooltipEvent">
+        <ion-segment-button value="click">Click</ion-segment-button>
+        <ion-segment-button value="press">Press</ion-segment-button>
+      </ion-segment>
+    </p>
+  </ion-item>
+  <ion-item-divider color="light">
+    Duration
+    <ion-note color="primary" item-right>
+      {{ duration + 'ms' }}
+    </ion-note>
+  </ion-item-divider>
+  <ion-item>
+    <ion-range [(ngModel)]="duration" [min]="1000" [max]="10000" [step]="1000" [pin]="true" [snaps]="true"></ion-range>
+  </ion-item>
+
+  <div padding>
+    <button margin-top ion-button mode="ios" block tooltip="I'm a beautiful tooltip" positionV="top" [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration">
+      Top tooltip
+    </button>
+
+    <p text-right>
+      <button ion-button mode="ios" tooltip="I'm a beautiful tooltip" positionH="left" [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration">
+        Left tooltip
+      </button>
+    </p>
+
+    <button ion-button mode="ios" tooltip="I'm a beautiful tooltip" positionH="right" [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration">
+      Right tooltip
+    </button>
+
+    <button ion-button mode="ios" block tooltip="I'm a beautiful tooltip" positionV="bottom" [arrow]="showArrow" [event]="tooltipEvent" [duration]="duration">
+      Bottom tooltip
+    </button>
+  </div>
+
+</ion-content>

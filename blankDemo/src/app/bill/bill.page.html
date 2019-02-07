@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<ion-content padding>
+
+ <!-- <p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>-->
+<!-- Inputs with labels -->
+<form [formGroup]="myForm">
+    <p *ngIf="!myForm.controls.myNameControl.valid  && (myForm.controls.myNameControl.dirty || submitAttempt)" style="color: #ea6153;">Please enter a valid name.</p>
+<ion-item>
+  <ion-input placeholder="Name"  [(ngModel)]="name" formControlName="myNameControl"  name='name' ></ion-input>
+</ion-item>
+<p *ngIf="!myForm.controls.myEmailControl.valid  && (myForm.controls.myEmailControl.dirty || submitAttempt)" style="color: #ea6153;">Please enter a valid email.</p>
+<ion-item>
+  <ion-input placeholder="Email" [(ngModel)]="email" formControlName="myEmailControl"  name='email'></ion-input>
+</ion-item>
+<ion-item>
+  <ion-input placeholder="Mobile" [(ngModel)]="mobile" formControlName="myMobileControl" name='mobile'></ion-input>
+</ion-item>
+
+<ion-item>
+    <ion-input placeholder="Items" [(ngModel)]="items" formControlName="myItemControl" name='mobile'></ion-input>
+  </ion-item>
+  
+
+
+<!-- Fill -->
+<ion-button type ='submit' (click)="meraFun();" expand="full"> GO </ion-button>
+</form>
+
+
+
+
+</ion-content>

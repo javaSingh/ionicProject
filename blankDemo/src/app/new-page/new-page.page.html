@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Catalouge </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+
+
+
+<!--   <ion-list>
+    <ion-item *ngFor="let data of DataNew" (click)="unread(data.name)">
+      {{data.name}} @{{data.rate}} Rs.
+    </ion-item>
+  </ion-list> -->
+
+  <ion-virtual-scroll [items]="DataNew">
+    <ion-item *virtualItem="let data" (click)="unread(data.name)">
+      {{data.name}} @{{data.rate}} Rs.
+    </ion-item>
+  </ion-virtual-scroll>
+
+</ion-content>

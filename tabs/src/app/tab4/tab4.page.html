@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Tab Four Cc Cv
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Default Input -->
+  <!-- <ion-input padding placeholder="Stored Value will come here" value='{{storedValue}}'></ion-input> -->
+
+  <!-- Input with placeholder -->
+  <ion-input padding [(ngModel)]='input' placeholder="Enter Input To Be Stored"></ion-input>
+  <ion-button padding (click)='saveButtonOnClickFun()'>Save & Go</ion-button>
+
+</ion-content>

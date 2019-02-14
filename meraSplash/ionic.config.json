@@ -1,0 +1,7 @@
+{
+  "name": "meraSplash",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -6,15 +6,59 @@
     </div>
   </div>
 </div>
+
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Login
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  The world is your oyster.
+  <div padding-horizontal text-center class="animated fadeInDown">
+    <div class="logo"></div>
+    <h2 ion-text class="text-primary">
+      <strong>Healthcare for the Entire Railway Organization</strong>
+    </h2>
+  </div>
+
+  <!-- Login form -->
+  <form class="list-form" (ngSubmit)="login()" #f="ngForm">
+    <ion-item>
+      <ion-label floating>
+        <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+        Login Id
+      </ion-label>
+      <ion-input type="email" [(ngModel)]="email" required name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>
+        <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+        Password
+      </ion-label>
+      <ion-input type="password" required [(ngModel)]="password" name="password"></ion-input>
+    </ion-item>
+    <div style="margin-top:1em">
+      <ion-button icon-start block color="dark" tappable type="submit">
+        <ion-icon name="log-in"></ion-icon>
+        SIGN IN
+      </ion-button>
+    </div>
+  </form>
+
+  <!-- Registration/Forget Creds -->
+  <div text-center margin-top>
+    <span ion-text color="secondary" tappable routerLink="/registrationPage">New here? 
+      <strong>Sign up/Forget User
+        Id
+      </strong>
+    </span>
+  </div>
+
+  <div text-center margin-top style="color:grey">
+      Version - 0.0.53
+    </div>
+  <!-- The world is your oyster.
   <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be
-    your guide.</p>
+    your guide.</p> -->
 </ion-content>

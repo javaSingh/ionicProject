@@ -1,5 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
+
+import { NetworkInterface } from '@ionic-native/network-interface/ngx';
+// ionic cordova plugin add cordova-plugin-networkinterface
+// npm install @ionic-native/network-interface
+//there is error for cordova not exist in browser then run below
+// ionic cordova platform add browser
+//ionic cordova run browser
+// https://forum.ionicframework.com/t/uncaught-in-promise-cordova-not-available-problem-why/122171/2
+
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+
+
+import { Network } from '@ionic-native/network/ngx';
+// ionic cordova plugin add cordova-plugin-network-information
+// npm install @ionic-native/network
+
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -17,6 +34,48 @@ export class HomePage implements OnInit {
   scannedCode = null;
 
   showSplash: boolean = true
+
+  constructor(private networkInterface: NetworkInterface,private geolocation: Geolocation,private network: Network){
+
+    console.log('Constructor')
+console.log('Down Link Max: '+this.network.downlinkMax)
+console.log('Network type: '+this.network.type)
+
+
+    this.networkInterface.getWiFiIPAddress().then((address)=>{
+      console.log('This is getWiFiIPAddress address: ' +address)
+    }).catch(error=>{
+      console.log('Error: ')
+      console.log(error)
+    })
+    this.networkInterface.getCarrierIPAddress().then((address)=>{
+      console.log('This is getCarrierIPAddress address: ' +address)
+    }).catch(error=>{
+      console.log('Error: ')
+      console.log(error)
+    })
+
+
+    this.geolocation.getCurrentPosition().then((resp) => {
+      console.log('Current Location')
+      console.log('lat: '+resp.coords.latitude)
+      console.log('long: '+resp.coords.longitude)
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+
+/*      Current Location
+ lat: 28.606280599999998
+ long: 28.606280599999998 */
+
+ /* Current Location
+lat: 28.606280599999998
+long: 77.2161637
+This is getWiFiIPAddress address: 172.16.22.173 */
+
+
+
+  }
 
   login() {
 

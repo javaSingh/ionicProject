@@ -17,6 +17,11 @@ import { Network } from '@ionic-native/network/ngx';
 // npm install @ionic-native/network
 
 
+// ionic cordova plugin add cordova-plugin-secure-storage
+// ionic cordova plugin add cordova-plugin-secure-storage
+// npm install @ionic-native/secure-storage
+import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage/ngx';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -35,9 +40,46 @@ export class HomePage implements OnInit {
 
   showSplash: boolean = true
 
-  constructor(private networkInterface: NetworkInterface,private geolocation: Geolocation,private network: Network){
+  constructor(
+    private networkInterface: NetworkInterface,
+    private geolocation: Geolocation,
+    private network: Network,
+    private secureStorage:SecureStorage
+    ){
 
     console.log('Constructor')
+
+
+    this.secureStorage.create('my_store_name')
+    .then((storage: SecureStorageObject) => {
+      console.log('Secure storage Created')
+  
+       storage.get('key')
+         .then(
+           data => console.log(data),
+           error => console.log(error)
+       );
+  
+       storage.set('key', 'value')
+         .then(
+          data => console.log(data),
+           error => console.log(error)
+       );
+  
+       storage.remove('key')
+       .then(
+           data => console.log(data),
+           error => console.log(error)
+       );
+  
+    }).catch((error)=>{
+      console.log('Create Catch Error:')
+      console.log(error)
+    }).finally(()=>{
+      console.log('SS Create Finally')
+    });
+  
+
 console.log('Down Link Max: '+this.network.downlinkMax)
 console.log('Network type: '+this.network.type)
 
